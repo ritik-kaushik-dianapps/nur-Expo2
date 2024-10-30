@@ -13,6 +13,10 @@ export function hello(): string {
   return ExpoNurApi2Module.hello();
 }
 
+export function startScan(): string {
+  return ExpoNurApi2Module.startScan();
+}
+
 export async function setValueAsync(value: string) {
   return await ExpoNurApi2Module.setValueAsync(value);
 }
@@ -23,4 +27,15 @@ export function addChangeListener(listener: (event: ChangeEventPayload) => void)
   return emitter.addListener<ChangeEventPayload>('onChange', listener);
 }
 
+export function addDeviceListener(listener: (event: any) => void): Subscription {
+  return emitter.addListener<ChangeEventPayload>('onDeviceFound', listener);
+}
+
+export function addScanListener(listener: (event: any) => void): Subscription {
+  return emitter.addListener<ChangeEventPayload>('onScanFinished', listener);
+}
+
+export function addScanErrorListener(listener: (event: any) => void): Subscription {
+  return emitter.addListener<ChangeEventPayload>('onScanError', listener);
+}
 export { ExpoNurApi2View, ExpoNurApi2ViewProps, ChangeEventPayload };

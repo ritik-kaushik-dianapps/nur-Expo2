@@ -41,3 +41,14 @@ android {
     abortOnError false
   }
 }
+
+dependencies {
+  // Example: Add the NurAPI dependency
+  implementation files('libs/NurApiAndroid/NurApiAndroid.aar')
+  implementation files('libs/NurApi/NurApi.jar')
+  implementation 'no.nordicsemi.android.support.v18:scanner:1.6.0'
+  implementation 'no.nordicsemi.android:dfu:1.9.0'
+  
+  // Expo modules dependencies
+  implementation project(':expo-modules-core')
+}

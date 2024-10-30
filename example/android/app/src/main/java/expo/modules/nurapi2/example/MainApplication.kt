@@ -14,6 +14,7 @@ import com.facebook.soloader.SoLoader
 
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper
+import expo.modules.nurapi2.ExpoNurApi2Module
 
 class MainApplication : Application(), ReactApplication {
 
@@ -45,6 +46,8 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
+    val expoNurApi2Module = ExpoNurApi2Module()
+    expoNurApi2Module.setContext(this)
     ApplicationLifecycleDispatcher.onApplicationCreate(this)
   }
 
