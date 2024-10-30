@@ -10,11 +10,15 @@ import com.nordicid.nurapi.NurApi
 import android.content.Context
 import androidx.core.os.bundleOf
 import expo.modules.kotlin.exception.CodedException
+import expo.modules.kotlin.exception.Exceptions
 
 class ExpoNurApi2Module : Module() {
   private var deviceScannerManager: DeviceScannerManager? = null
   private val nurApi = NurApi()
-  private var context: Context? = null
+  val context: Context
+
+  get() = appContext.reactContext ?: throw Exceptions.ReactContextLost()
+
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
@@ -57,10 +61,6 @@ class ExpoNurApi2Module : Module() {
     AsyncFunction("startScan") { startScan() }
     AsyncFunction("stopScan") { stopScan() }
     AsyncFunction("getDevicesList") { promise: Promise -> getDevicesList(promise) }
-  }
-  
-  fun setContext(context: Context) {
-    this.context = context
   }
 
   private fun startScan() {
