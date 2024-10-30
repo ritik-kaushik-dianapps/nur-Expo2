@@ -4,7 +4,6 @@ import * as ExpoNurApi2 from "expo-nur-api2";
 import { useEffect } from "react";
 
 export default function App() {
-  
   const startScan = async () => {
     ExpoNurApi2.startScan();
   };
@@ -15,27 +14,19 @@ export default function App() {
 
   useEffect(() => {
     const subscription1 = ExpoNurApi2.addDeviceListener((e) => {
-      console.log('addDeviceListener',e);
-      
+      console.log("addDeviceListener", e);
     });
     const subscription2 = ExpoNurApi2.addScanErrorListener((e) => {
-      console.log('addScanErrorListener',e);
-
+      console.log("addScanErrorListener", e);
     });
     const subscription3 = ExpoNurApi2.addScanListener((e) => {
-      console.log('addScanListener',e);
-
-    });
-    const subscription4 = ExpoNurApi2.addChangeListener((e) => {
-      console.log('addChangeListener',e);
-
+      console.log("addScanListener", e);
     });
 
     return () => {
       subscription1.remove();
       subscription2.remove();
       subscription3.remove();
-      subscription4.remove();
     };
   }, []);
 

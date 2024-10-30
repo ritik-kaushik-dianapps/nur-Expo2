@@ -49,15 +49,6 @@ class ExpoNurApi2Module : Module() {
       ))
     }
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(ExpoNurApi2View::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: ExpoNurApi2View, prop: String ->
-        println(prop)
-      }
-    }
-
     AsyncFunction("startScan") { startScan() }
     AsyncFunction("stopScan") { stopScan() }
     AsyncFunction("getDevicesList") { promise: Promise -> getDevicesList(promise) }
